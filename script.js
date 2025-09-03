@@ -65,3 +65,17 @@ function makeCall(serviceName, phoneNumber) {
 
   addToHistory(serviceName, phoneNumber);
 }
+
+function addToHistory(serviceName, phoneNumber) {
+  var now = new Date();
+  var timeString = now.toLocaleTimeString();
+
+  var historyItem = {
+    name: serviceName,
+    number: phoneNumber,
+    time: timeString,
+  };
+
+  callHistory.unshift(historyItem);
+  updateHistoryDisplay();
+}
