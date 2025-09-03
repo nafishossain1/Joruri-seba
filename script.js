@@ -79,3 +79,44 @@ function addToHistory(serviceName, phoneNumber) {
   callHistory.unshift(historyItem);
   updateHistoryDisplay();
 }
+
+function updateHistoryDisplay() {
+  var historyList = document.getElementById("history-list");
+  historyList.innerHTML = "";
+
+  if (callHistory.length === 0) {
+    historyList.innerHTML =
+      '<div class="no-history"><p>No call history available</p><span>Make a call to see history here</span></div>';
+    return;
+  }
+
+  for (var i = 0; i < callHistory.length; i++) {
+    var item = callHistory[i];
+
+    var historyHTML =
+      '<div class="history-item">' +
+      "<h4>" +
+      item.name +
+      "</h4>" +
+      '<div class="number">' +
+      item.number +
+      "</div>" +
+      '<div class="time">' +
+      item.time +
+      "</div>" +
+      "</div>";
+
+    historyList.innerHTML = historyList.innerHTML + historyHTML;
+  }
+}
+
+function clearHistory() {
+  var confirmClear = confirm(
+    "Are you sure you want to clear all call history?"
+  );
+  if (confirmClear) {
+    callHistory = [];
+    updateHistoryDisplay();
+    alert("Call history cleared!");
+  }
+}
