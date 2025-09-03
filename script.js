@@ -24,3 +24,18 @@ function heartClick(heartIcon) {
 
   document.getElementById("heart-count").innerHTML = heartCount;
 }
+
+function copyNumber(phoneNumber) {
+  if (navigator.clipboard) {
+    navigator.clipboard
+      .writeText(phoneNumber)
+      .then(function () {
+        alert("Number copied: " + phoneNumber);
+      })
+      .catch(function () {
+        alert("Could not copy. Number is: " + phoneNumber);
+      });
+  } else {
+    alert("Number to copy: " + phoneNumber);
+  }
+}
