@@ -39,3 +39,29 @@ function copyNumber(phoneNumber) {
     alert("Number to copy: " + phoneNumber);
   }
 }
+
+function makeCall(serviceName, phoneNumber) {
+  if (coinCount < 20) {
+    alert(
+      "Not enough coins! You need 20 coins to make a call. You have " +
+        coinCount +
+        " coins."
+    );
+    return;
+  }
+
+  coinCount = coinCount - 20;
+  document.getElementById("coin-count").innerHTML = coinCount;
+
+  alert(
+    "Calling " +
+      serviceName +
+      "\nNumber: " +
+      phoneNumber +
+      "\n20 coins used. Remaining: " +
+      coinCount +
+      " coins"
+  );
+
+  addToHistory(serviceName, phoneNumber);
+}
